@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container jumbotron py-4">
+      <h1 class="display-4 text-center">Translator UI</h1>
+      <p class="lead text-center">A simple google-translate like application. Backend is supported by Node.JS, Frontend is supported by Vue.js, axios, bootstrap, etc.</p>
+      <hr class="my-4">
+      <p class="text-center">author: babangcreator</p>
+    </div>
+    <translator/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Translator from "./components/Translator.vue"
+import "bootstrap"
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Translator
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+  @import "~bootstrap/scss/bootstrap"
 </style>
