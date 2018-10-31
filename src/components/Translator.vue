@@ -51,7 +51,6 @@
         </div>
       </div>
     </div>
-      <button type="button" class="btn btn-primary" @click="translateText()">Translate</button>
   </div>
 </template>
 

@@ -1,4 +1,6 @@
-import axios from "axios";
+import axios from "axios"
+import _ from "lodash"
+
 const baseUrl = 'http://localhost:3000'
 const endpoints = {
   translate: '/translate',
@@ -39,9 +41,11 @@ export default {
     }
   },
   watch: {
-    inputText: function () {}
+    inputText: function () {
+      this.debouncedTranslateText()
+    }
   },
   created () {
-    // this.translateText()
+    this.debouncedTranslateText = _.debounce(this.translateText, 500)
   }
 }
