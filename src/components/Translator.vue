@@ -22,6 +22,12 @@
       </div>
       <div class="w-100"></div>
       <div class="col">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="!validInputText()">
+          <strong>Type something on input text!</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <label for="input-text">Input Text</label>
         <div class="input-group">
           <textarea class="form-control" id="input-text" rows="15" 

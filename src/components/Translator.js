@@ -26,8 +26,14 @@ export default {
     translateText() {
       this.isLoading = true
       let source = this.inputLanguage
-      if (source === 'auto') source = this.detectedLanguages || 'id'
+      // this is bad conditional handler :(((
+      if (source === 'auto') source = this.detectedLanguage || 'id'
+      if (source === 'und') source = 'id'
       let target = this.outputLanguage
+      if (source === target) {
+        if (source === 'id') source = 'en'
+        else source = 'id'
+      }
       axios({
         method: 'post',
         url: endpoints.translate,
@@ -63,20 +69,26 @@ export default {
       if (this.inputLanguage !== this.outputLanguage) return true
       this.outputText = '-'
       return false 
+    },
+    validInputText () {
+      return this.inputText !== ''
     }
   },
   watch: {
     inputText: function () {
       if (!this.validateLanguageSelect()) return
+      if (!this.validInputText()) return 
       this.debouncedTranslateText()
       this.deboucedDetectLanguage()
     },
     inputLanguage: function () {
       if (!this.validateLanguageSelect()) return
+      if (!this.validInputText()) return 
       this.debouncedTranslateText()
     },
     outputLanguage: function () {
       if (!this.validateLanguageSelect()) return
+      if (!this.validInputText()) return 
       this.debouncedTranslateText()
     }
   },
